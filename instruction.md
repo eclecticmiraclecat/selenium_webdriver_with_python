@@ -23,7 +23,7 @@ ff.test()
 ```
 
 # Find List of Elements
-![](./images/1.png)
+![](./images/2.png)
 ```py
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -43,3 +43,28 @@ class ListOfElements():
 ff = ListOfElements()
 ff.test()
 ```
+
+# XPath
+
+> Syntax
+> //tag[@attribute='value']
+
+## // and /
+![](./images/3.png)
+### / immediate child
+![](./images/4.png)
+
+### // nested child
+![](./images/5.png)
+
+## Using Text
+> Syntax
+> //tag[@attribute='value']//tag[text()='Required Text']
+> //tag[text()='Required Text']
+![](./images/6.png)
+
+## Using Contains
+> Syntax
+> //tag[@attribute='value']//tag[contains(attribute, 'value')]
+> //tag[contains(attribute, 'Partial Text')]
+![](./images/7.png)
