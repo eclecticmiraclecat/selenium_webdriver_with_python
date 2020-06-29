@@ -3,10 +3,6 @@
 
 # Find Element By Id
 
-## By Id
-```html
-<input id="name" name="enter-name" class="inputs" placeholder="Enter Your Name" type="text">
-```
 ![](./images/1.png)
 ```py
 from selenium import webdriver
