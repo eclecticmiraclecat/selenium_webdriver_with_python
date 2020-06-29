@@ -68,3 +68,6 @@ ff.test()
 > //tag[@attribute='value']//tag[contains(attribute, 'value')]
 > //tag[contains(attribute, 'Partial Text')]
 ![](./images/7.png)
+![](./images/8.png)
+![](./images/9.png)
+![](./images/10.png)
