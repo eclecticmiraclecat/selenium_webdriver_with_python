@@ -47,6 +47,7 @@ ff.test()
 # XPath
 
 > Syntax
+
 > //tag[@attribute='value']
 
 ## // and /
@@ -59,14 +60,20 @@ ff.test()
 
 ## Using Text
 > Syntax
+
 > //tag[@attribute='value']//tag[text()='Required Text']
+
 > //tag[text()='Required Text']
+
 ![](./images/6.png)
 
 ## Using Contains
 > Syntax
+
 > //tag[@attribute='value']//tag[contains(attribute, 'value')]
+
 > //tag[contains(attribute, 'Partial Text')]
+
 ![](./images/7.png)
 ![](./images/8.png)
 ![](./images/9.png)
