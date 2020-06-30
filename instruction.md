@@ -118,7 +118,73 @@ ff.test()
 
 2. Find atuhor of the book "The Green Mile" in http://dhtmlx.com/docs/products/dhtmlxGrid/	
 ![](./images/19.png)
+
+# Browser interactions
+1. click
+2. send keys
+3. drag and drop
+4. upload file
   
+# Click on Element
+
+## Find login link
+![](./images/20.png)
+
+## Clink login link
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+class ClickAndSendKeys():
+
+    def test(self):
+        baseUrl = "https://letskodeit.teachable.com"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+        driver.implicitly_wait(10)
+
+        loginLink = driver.find_element(By.XPATH, "//div[@id='navbar']//a[@href='/sign_in']")
+        loginLink.click()
+
+ff = ClickAndSendKeys()
+ff.test()
+```
+
+## Find email field 
+![](./images/21.png)
+
+## Find password field
+![](./images/22.png)
+
+## Send keys on email and password fields
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+class ClickAndSendKeys():
+
+    def test(self):
+        baseUrl = "https://letskodeit.teachable.com"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+        driver.implicitly_wait(10)
+
+        loginLink = driver.find_element(By.XPATH, "//div[@id='navbar']//a[@href='/sign_in']")
+        loginLink.click()
+
+        emailField = driver.find_element(By.ID, "user_email")
+        emailField.send_keys("test")
+
+        passwordField = driver.find_element(By.ID, "user_password")
+        passwordField.send_keys("test")
+
+
+ff = ClickAndSendKeys()
+ff.test()
+```
+
 
 
 
