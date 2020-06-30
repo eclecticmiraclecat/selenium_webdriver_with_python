@@ -90,3 +90,35 @@ ff.test()
 ![](./images/13.png)
 ![](./images/14.png)
 
+
+## Parent and sibling
+
+> Syntax
+
+> xpath-to-some-element//parent::<tag>
+
+> xpath-to-some-element//preceding-sibling::<tag>
+
+> xpath-to-some-element//following-sibling::<tag>
+
+![](./images/14.png)
+### Parent
+![](./images/15.png)
+
+### Preceding sibling
+![](./images/16.png)
+
+### Following-sibling
+![](./images/17.png)
+
+
+## Exercise
+1. Find the price of the course "Python Programming Language" in http://letskodeit.teachable.com/pages/practice
+![](./images/18.png)
+
+2. Find atuhor of the book "The Green Mile" in http://dhtmlx.com/docs/products/dhtmlxGrid/	
+![](./images/19.png)
+  
+
+
+
