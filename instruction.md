@@ -295,6 +295,50 @@ ff = GetAttribute()
 ff.test()
 ```
 
+## Execute javascript
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+class JavaScriptExecution():
+
+    def test(self):
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get("https://letskodeit.teachable.com/pages/practice")
+        #driver.execute_script("window.location = 'https://letskodeit.teachable.com/pages/practice';")
+        driver.execute_script("alert('hi');")
+
+        # element = driver.find_element(By.ID, "name")
+        element = driver.execute_script("return document.getElementById('name');")
+        element.send_keys("Test")
+
+ff = JavaScriptExecution()
+ff.test()
+```
+
+## Take screenshot
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+class Screenshots():
+
+    def test(self):
+        baseUrl = "https://letskodeit.teachable.com/"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+        driver.implicitly_wait(3)
+
+        driver.save_screenshot('img.png')
+
+ff = Screenshots()
+ff.test()
+```
+
 
 
 
