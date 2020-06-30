@@ -74,7 +74,19 @@ ff.test()
 
 > //tag[contains(attribute, 'Partial Text')]
 
-![](./images/7.png)
 ![](./images/8.png)
 ![](./images/9.png)
 ![](./images/10.png)
+
+## Using Starts-with
+> Syntax
+
+> //tag[starts-with(attribute, 'value')]
+
+![](./images/11.png)
+![](./images/12.png)
+
+## Simplify xpath
+![](./images/13.png)
+![](./images/14.png)
+
