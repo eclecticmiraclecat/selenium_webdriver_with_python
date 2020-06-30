@@ -185,6 +185,44 @@ ff = ClickAndSendKeys()
 ff.test()
 ```
 
+## Find list of elements
+![](./images/23.png)
+![](./images/24.png)
 
 
+## Select dropdown method if select tag exists
+![](./images/25.png)
+
+```py
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+
+class DropdownSelect():
+
+    def test(self):
+        baseUrl = "https://letskodeit.teachable.com/pages/practice"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+        driver.implicitly_wait(10)
+
+        element = driver.find_element_by_id("carselect")
+        sel = Select(element)
+
+        sel.select_by_value("benz")
+        print("Select Benz by value")
+
+        sel.select_by_index("2")
+        print("Select Honda by index")
+
+        sel.select_by_visible_text("BMW")
+        print("Select BMW by visible text")
+
+        sel.select_by_index(2)
+        print("Select Honda by index")
+
+
+ff = DropdownSelect()
+ff.test()
+```
 
