@@ -339,6 +339,203 @@ ff = Screenshots()
 ff.test()
 ```
 
+## Scroll up and down page
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+class ScrollingElement():
+
+    def test(self):
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get("https://letskodeit.teachable.com/pages/practice")
+        driver.implicitly_wait(3)
 
 
+        # Scroll Down
+        driver.execute_script("window.scrollBy(0, 1000);")
+        time.sleep(3)
+
+        # Scroll Up
+        driver.execute_script("window.scrollBy(0, -1000);")
+        time.sleep(3)
+
+        # Scroll Element Into View
+        element = driver.find_element(By.ID, "mousehover")
+        driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        time.sleep(2)
+        driver.execute_script("window.scrollBy(0, -150);")
+
+        # Native Way To Scroll Element Into View
+        time.sleep(2)
+        driver.execute_script("window.scrollBy(0, -1000);")
+        location = element.location_once_scrolled_into_view
+        print("Location: " + str(location))
+        driver.execute_script("window.scrollBy(0, -150);")
+
+
+
+ff = ScrollingElement()
+ff.test()
+```
+
+# Switch Windows and iFrames
+
+## Switch Window Focus
+![](./images/30.png)
+![](./images/31.png)
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+class SwitchToWindow():
+
+    def test(self):
+        baseUrl = "https://letskodeit.teachable.com/pages/practice"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+
+        # Find parent handle -> Main Window
+        parentHandle = driver.current_window_handle
+        print("Parent Handle: " + parentHandle)
+
+        # Find open window button and click it
+        driver.find_element(By.ID, "openwindow").click()
+        time.sleep(2)
+
+        # Find all handles, there should two handles after clicking open window button
+        handles = driver.window_handles
+
+        # Switch to window and search course
+        for handle in handles:
+            print("Handle: " + handle)
+            if handle not in parentHandle:
+                driver.switch_to.window(handle)
+                print("Switched to window:: " + handle)
+                searchBox = driver.find_element(By.ID, "search-courses")
+                searchBox.send_keys("python")
+                time.sleep(2)
+                driver.close()
+                break
+
+        # Switch back to the parent handle
+        driver.switch_to.window(parentHandle)
+        driver.find_element(By.ID, "name").send_keys("Test Successful")
+
+
+
+
+
+
+ff = SwitchToWindow()
+ff.test()
+```
+
+## Switch to Frames
+- iframe is another page within the page
+- iframe or top window will be shown
+
+![](./images/32.png)
+![](./images/33.png)
+![](./images/34.png)
+
+
+### iframe id
+![](./images/35.png)
+
+### iframe name
+![](./images/36.png)
+
+
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+class SwitchToFrame():
+
+    def test(self):
+        baseUrl = "https://letskodeit.teachable.com/pages/practice"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+        driver.execute_script("window.scrollBy(0, 1000);")
+
+        # Switch to frame using Id
+        driver.switch_to.frame("courses-iframe")
+
+        # Switch to frame using name
+        # driver.switch_to.frame("iframe-name")
+
+        # Switch to frame using numbers
+        # driver.switch_to.frame(0)
+
+        time.sleep(2)
+        # Search course
+        searchBox = driver.find_element(By.ID, "search-courses")
+        searchBox.send_keys("python")
+        time.sleep(2)
+
+        # Switch back to the parent frame
+        driver.switch_to.default_content()
+        driver.execute_script("window.scrollBy(0, -1000);")
+        time.sleep(2)
+        driver.find_element(By.ID, "name").send_keys("Test Successful")
+
+
+
+
+ff = SwitchToFrame()
+ff.test()
+```
+
+## Javascript Popups
+- can not find alert box in html
+
+![](./images/37.png)
+![](./images/38.png)
+
+- alerts are javascript functions
+
+![](./images/39.png)
+
+## buttons xpath
+![](./images/40.png)
+![](./images/41.png)
+
+```py
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+class SwitchToFrame():
+
+    def test1(self):
+        baseUrl = "https://letskodeit.teachable.com/pages/practice"
+        driver = webdriver.Firefox()
+        driver.maximize_window()
+        driver.get(baseUrl)
+
+
+        driver.find_element(By.ID, "name").send_keys("Anil")
+        driver.find_element(By.ID, "alertbtn").click()
+        time.sleep(2)
+        alert1 = driver.switch_to.alert
+        alert1.accept()
+        time.sleep(2)
+        driver.find_element(By.ID, "name").send_keys("Anil")
+        driver.find_element(By.ID, "confirmbtn").click()
+        time.sleep(2)
+        alert2 = driver.switch_to.alert
+        alert2.dismiss()
+
+
+
+ff = SwitchToFrame()
+ff.test1()
+```
 
